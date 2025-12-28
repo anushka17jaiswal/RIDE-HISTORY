@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, black, grey
+    );
+    color: white;
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+}
+
+.add-ride-form {
+    max-width: 600px;
+    margin: 15px auto;
+    background: grey;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.add-ride-form h2 {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.add-ride-form input,
+.add-ride-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+}
+
+.add-ride-form button {
+    width: 100%;
+    padding: 12px;
+    background: green;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.controls {
+    max-width: 600px;
+    margin: 10px auto;
+    display: flex;
+    gap: 10px;
+}
+
+.controls input,
+.controls select {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+}
+
+
+.ride-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.ride-card {
+    background: black;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 14px;
+}
+
+.ride-card p {
+    margin: 6px 0;
+}
+
+
+.status.completed {
+    color: green;
+    font-weight: bold;
+}
+
+.status.cancelled {
+    color: red;
+    font-weight: bold;
+}
+
+
+.delete-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: red;
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .add-ride-form,
+    .ride-container {
+        width: 100%;
+    }
+
+    .ride-card {
+        padding: 12px;
+    }
+
+    .delete-btn {
+        top: auto;
+        bottom: 12px;
+        right: 12px;
+    }
+}

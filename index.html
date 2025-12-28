@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ride History</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Ride History</h1>
+
+
+<div class="add-ride-form">
+    <h2>Add New Ride</h2>
+
+    <input type="date" id="date">
+    <input type="text" id="pickup" placeholder="Pickup Location">
+    <input type="text" id="drop" placeholder="Drop Location">
+    <input type="number" id="fare" placeholder="Fare (₹)">
+
+    <select id="status">
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+    </select>
+
+    <button onclick="addRide()">Add Ride</button>
+</div>
+
+
+<div class="controls">
+    <input type="text" id="searchInput" placeholder="Search by location">
+    <select id="statusFilter">
+        <option value="All">All</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+    </select>
+</div>
+
+
+<div class="ride-container" id="rideContainer"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
