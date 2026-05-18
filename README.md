@@ -1,10 +1,12 @@
 **🚕 Ride History Web App**
 
 **About the Project**
-The **Ride History Web App** is a simple and easy-to-use web application that helps users keep track of their rides.
-Users can add ride details like pickup location, drop location, fare, date, and ride status. All rides are shown in a clean list where they can be searched, filtered, or deleted.
+Ride History is a full-stack web application that helps users store and manage ride details easily. Users can add ride information such as pickup location, drop location, fare amount, ride date, and ride status.
 
-This project is made using basic **HTML, CSS, and JavaScript**, so it is beginner-friendly and easy to understand.
+The project uses a MySQL database to permanently store ride records and provides a clean, responsive interface to view, search, filter, and delete rides.
+
+This project demonstrates full-stack web development using HTML, CSS, JavaScript, Node.js, Express.js, and MySQL.
+
 
 **Screenshots:**
 
@@ -15,36 +17,52 @@ This project is made using basic **HTML, CSS, and JavaScript**, so it is beginne
 
  **What This App Can Do**
 
-* Add new ride details
-* Show all past rides in one place
-* Search rides by pickup or drop location
-* Filter rides by status (Completed or Cancelled)
-* Delete any ride when it is no longer needed
-* Works smoothly on both mobile and desktop screens
+- Add new rides
+- Store ride history permanently using MySQL
+- View all past rides
+- Search rides by location
+- Filter rides by status
+- Delete rides
+- Responsive design for mobile and desktop
+
 
 **Technologies Used**
 
-HTML – for creating the structure of the app
-CSS– for styling, layout, and responsiveness
-JavaScript – for handling logic, filtering, searching, and dynamic updates
+### Frontend
+- HTML
+- CSS
+- JavaScript
 
-**Project Files**
+### Backend
+- Node.js
+- Express.js
 
-Ride-History
-├── index.html   – Main webpage
-├── style.css    – Design and layout
-├── script.js    – App logic
-└── README.md    – Project description
+### Database
+- MySQL
 
-**How to Use**
+## 📂 Project Structure
+Ride-History/
+│
+├── public/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── server.js
+├── package.json
+├── package-lock.json
+└── README.md
 
-1. Open the project folder
-2. Double-click **index.html** to open it in a browser
-3. Fill in the ride details and click **Add Ride**
-4. Use the search bar or filter to find rides
-5. Click delete to remove a ride from the list
 
-No installation or setup is required.
+**How to Run the Project**
+1. Install Dependencies
+**npm install**
+2. Create MySQL Database
+**CREATE DATABASE ride_history;**
+3. Start the Server
+**node server.js**
+4. Open in Browser
+**http://localhost:3000**
 
 **Ride Information Stored**
 
@@ -56,14 +74,13 @@ No installation or setup is required.
 
 
 **Future Improvements**
-
-* Save rides using local storage or a database
-* Add an edit option for rides
-* Add user login functionality
-* Show total spending and ride statistics
-
+* Edit ride details
+* User login system
+* Ride analytics and charts
+* Total spending tracker
+* Export ride history
 
 **Author**
 **Anushka**
-Frontend Web Development Project
+Full Stack Web Development Project
 
