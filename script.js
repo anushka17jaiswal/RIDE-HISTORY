@@ -1,42 +1,41 @@
-let rides = JSON.parse(localStorage.getItem("rides")) || [];
-
 const container = document.getElementById("rideContainer");
-const searchInput = document.getElementById("searchInput");
-const statusFilter = document.getElementById("statusFilter");
 
-function displayRides() {
+async function displayRides() {
+
+    const response = await fetch("http://localhost:3000/rides");
+
+    const rides = await response.json();
+
     container.innerHTML = "";
 
-    const searchText = searchInput.value.toLowerCase();
-    const filterStatus = statusFilter.value;
+    rides.forEach((ride) => {
 
-    rides
-        .filter(ride =>
-            (ride.pickup.toLowerCase().includes(searchText) ||
-             ride.drop.toLowerCase().includes(searchText)) &&
-            (filterStatus === "All" || ride.status === filterStatus)
-        )
-        .forEach((ride, index) => {
-            const card = document.createElement("div");
-            card.className = "ride-card";
+        const card = document.createElement("div");
 
-            card.innerHTML = `
-                <p><strong>Date:</strong> ${ride.date}</p>
-                <p><strong>Pickup:</strong> ${ride.pickup}</p>
-                <p><strong>Drop:</strong> ${ride.drop}</p>
-                <p><strong>Fare:</strong> ₹${ride.fare}</p>
-                <p class="status ${ride.status.toLowerCase()}">${ride.status}</p>
-                <button class="delete-btn" onclick="deleteRide(${index})">Delete</button>
-            `;
+        card.className = "ride-card";
 
-            container.appendChild(card);
-        });
+        card.innerHTML = `
+            <p><strong>Date:</strong> ${ride.ride_date}</p>
+            <p><strong>Pickup:</strong> ${ride.pickup_location}</p>
+            <p><strong>Drop:</strong> ${ride.drop_location}</p>
+            <p><strong>Fare:</strong> ₹${ride.fare}</p>
 
-    localStorage.setItem("rides", JSON.stringify(rides));
+            <p class="status ${ride.status.toLowerCase()}">
+                ${ride.status}
+            </p>
+
+            <button class="delete-btn"
+                onclick="deleteRide(${ride.id})">
+                Delete
+            </button>
+        `;
+
+        container.appendChild(card);
+    });
 }
 
+async function addRide() {
 
-function addRide() {
     const date = document.getElementById("date").value;
     const pickup = document.getElementById("pickup").value;
     const drop = document.getElementById("drop").value;
@@ -48,31 +47,38 @@ function addRide() {
         return;
     }
 
-    const newRide = {
-        date,
-        pickup,
-        drop,
-        fare,
-        status
-    };
+    await fetch("http://localhost:3000/addRide", {
 
-    rides.unshift(newRide);
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            date,
+            pickup,
+            drop,
+            fare,
+            status
+        })
+    });
+
     displayRides();
 
-    
     document.getElementById("date").value = "";
     document.getElementById("pickup").value = "";
     document.getElementById("drop").value = "";
     document.getElementById("fare").value = "";
 }
 
+async function deleteRide(id) {
 
-function deleteRide(index) {
-    rides.splice(index, 1);
+    await fetch(`http://localhost:3000/deleteRide/${id}`, {
+        method: "DELETE"
+    });
+
     displayRides();
 }
-
-searchInput.addEventListener("input", displayRides);
-statusFilter.addEventListener("change", displayRides);
 
 displayRides();
