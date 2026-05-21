@@ -7,11 +7,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static("public"));
 const db = mysql.createConnection({
-    host: "mysql.railway.internal",
+    host: "kodama.proxy.rlwy.net",
     user: "root",
     password: "NUGopEyzfvyyNsbGLphNNNdkUFuVQWui",
     database: "railway",
-    port:3306
+    port:52985
 });
 db.connect((err) => {
     if (err) {
